@@ -1,0 +1,90 @@
+.landingPageView {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 93vh;
+  background: #070F2B;
+}
+.landingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 20%;
+}
+.mainText {
+  width: 100%;
+  height: 30%;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  color: #9290C3;
+  margin: 0;
+}
+.inputButtonContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 70%;
+}
+.inputContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  height: 40%;
+}
+.addUrlInput {
+  width: 80%;
+  height: 90%;
+  border-radius: 5px 0 0 5px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+}
+.addUrlInput::placeholder {
+  font-size: 15px;
+}
+.addUrlButton {
+  width: 20%;
+  height: 100%;
+  border-radius: 0 5px 5px 0;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #1B1A55;
+}
+.urlsList {
+  text-align: center;
+  color: #9290C3;
+  width: 100%;
+  height: 70%;
+}
+
+@media screen and (width > 768px) {
+  .landingContainer {
+    height: 30%;
+  }
+  .urlsList {
+    height: 60%;
+  }
+  .mainText {
+    height: 40%;
+    font-size: 50px;
+  }
+  .inputButtonContainer {
+    height: 60%;
+  }
+  .addUrlInput {
+    width: 60%;
+    height: 80%;
+  }
+  .addUrlButton {
+    height: 90%;
+  }
+}
