@@ -4,10 +4,15 @@ import { useState } from 'react';
 
 import { ProgressSpinner } from 'primereact/progressspinner';
 
+import {  useDispatch } from 'react-redux';
+import { setUser } from '../../features/auth/authSlice';
+
 function EmailModal({ onModalClose }) {
   const [isLoading, setIsLoading] = useState(false);
   const [nameInput, setNameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
+  
+  const dispatch = useDispatch();
 
   const handleNameInputChange = (event) => {
     setNameInput(event.target.value);
@@ -22,7 +27,8 @@ function EmailModal({ onModalClose }) {
     setIsLoading(true);
     
     try {
-      await axios.post('/users', { name: emailInput, email: emailInput });
+      const response = await axios.post('/users', { name: emailInput, email: emailInput });
+      dispatch(setUser(response.data));
       setNameInput('');
       setEmailInput('');
       setIsLoading(false);

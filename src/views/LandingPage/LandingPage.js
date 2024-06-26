@@ -11,6 +11,9 @@ function LandingPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // ADD CURRENT USER TO FILTER URLS
+  // const currentUser = useSelector((state) => state.auth.user);
+
   const handleUrlInputChange = (event) => {
     setUrlInput(event.target.value)
   }

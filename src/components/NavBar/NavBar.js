@@ -2,18 +2,22 @@ import style from './NavBar.module.css';
 import { Link, useNavigate } from "react-router-dom";
 import 'primeicons/primeicons.css';
 
-// import {  useDispatch, useSelector } from 'react-redux';
-// import { logout } from '../../features/auth/authSlice';
+import {  useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../features/auth/authSlice';
 
 function NavBar() {
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
-  // const currentUser = useSelector((state) => state.auth.user);
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.auth.user);
 
-  // const signOut = () => {
-  //   dispatch(logout());
-  //   navigate('/');
-  // }
+  const logOut = () => {
+    dispatch(logout());
+  }
+
+  const logIn = () => {
+    // ADD POST AUTH
+    console.log('Log In');
+  }
 
   return (
     <nav className={style.navContainer}>
@@ -29,27 +33,27 @@ function NavBar() {
           About
         </Link>
 
-          {/* {
+          {
             currentUser ? (
               <>
-                <Link to='/profile' className={style.linkItem}>
-                  <span>Profile</span>
-                  &nbsp;
-                  &nbsp;
-                  <i className='pi pi-user' style={{fontSize: '10px'}}></i>
-                </Link>
-
-                <button onClick={signOut} className={style.logout}>
+                <button onClick={logOut} className={style.logout}>
                   <span>Logout</span>
                   &nbsp;
                   &nbsp;
-                  <i className='pi pi-sign-out' style={{fontSize: '10px'}}></i>
+                  <i className='pi pi-sign-out' style={{fontSize: '15px'}}></i>
                 </button>
               </>
             ) : (
-              ''
+              <>
+                <button onClick={logIn} className={style.logout}>
+                  <span>Enter Email</span>
+                  &nbsp;
+                  &nbsp;
+                  <i className='pi pi-sign-in' style={{fontSize: '15px'}}></i>
+                </button>
+              </>
             )
-          } */}
+          }
       </div>
     </nav>
   )
