@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import EmailModal from '../../components/EmailModal/EmailModal';
 import style from './LandingPage.module.css';
 import axios from 'axios';
 
@@ -8,12 +9,14 @@ function LandingPage() {
   const [urlsList, setUrlsList] = useState([]);
   const [urlInput, setUrlInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleUrlInputChange = (event) => {
     setUrlInput(event.target.value)
   }
 
-  const addUrl = async () => {
+  const addUrl = useCallback(async(event) => {
+    event.preventDefault();
     setIsLoading(true);
 
     try {
@@ -25,7 +28,7 @@ function LandingPage() {
       setIsLoading(false);
       throw new Error(error);  
     }
-  }
+  }, [urlInput]);
 
   const getAllUrls = useCallback(async () => {
     setIsLoading(true);
@@ -41,9 +44,17 @@ function LandingPage() {
     }
   }, []);
 
+  const openEmailModal = () => {
+    setIsModalOpen(true);
+  }
+
+  const closeEmailModal = (data) => {
+    setIsModalOpen(data);
+  }
+
   useEffect(() => {
     getAllUrls();
-  }, [getAllUrls])
+  }, [getAllUrls, addUrl])
   
   return (
     <div className={style.landingPageView}>
@@ -53,11 +64,11 @@ function LandingPage() {
         </p>
 
         <div className={style.inputButtonContainer}>
-          <label style={ { color: '#fff', fontSize: '15px' } }>Add an URL</label>
           <div className={style.inputContainer}>
             <input onChange={handleUrlInputChange} className={style.addUrlInput} value={urlInput} type='text' placeholder='Long url...' />
             <button onClick={addUrl} className={style.addUrlButton}>ADD</button>
           </div>
+          <p onClick={openEmailModal} className={style.addEmailMessage}>The URL's below can be seen by anyone, if you want to store your own URL's please <span style={ { color: 'lightblue', textDecoration: 'underline', cursor: 'pointer' } }>add an email.</span></p>
         </div>
       </div>
 
@@ -89,6 +100,12 @@ function LandingPage() {
               )}
             </div>
           )
+        }
+
+        {
+          isModalOpen ?
+            <EmailModal onModalClose={closeEmailModal} />
+        : ''
         }
       </div>
     </div>
