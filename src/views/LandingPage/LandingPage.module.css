@@ -159,6 +159,11 @@
   height: 30px;
   padding-right: 10px;
 }
+.addAnEmailLink {
+  color: lightblue;
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 @media screen and (width > 768px) {
   .mainText {

@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
-import EmailModal from '../../components/EmailModal/EmailModal';
+import EmailModal from '../../components/Auth/EmailModal/EmailModal';
 import style from './LandingPage.module.css';
 import axios from 'axios';
 
 import { ProgressSpinner } from 'primereact/progressspinner';
+import { useSelector } from 'react-redux';
 
 function LandingPage() {
   const [urlsList, setUrlsList] = useState([]);
@@ -11,8 +12,7 @@ function LandingPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // ADD CURRENT USER TO FILTER URLS
-  // const currentUser = useSelector((state) => state.auth.user);
+  const currentUser = useSelector((state) => state.auth.user);
 
   const handleUrlInputChange = (event) => {
     setUrlInput(event.target.value)
@@ -22,8 +22,17 @@ function LandingPage() {
     event.preventDefault();
     setIsLoading(true);
 
+    const data = {}
+
+    if (currentUser) {
+      data.longUrl = urlInput;
+      data.userId = currentUser._id;
+    } else {
+      data.longUrl = urlInput;
+    }
+
     try {
-      await axios.post('/url/shorten', { longUrl: urlInput });
+      await axios.post('/url/shorten', data);
       setUrlInput('');
       setIsLoading(false);
     } 
@@ -31,13 +40,13 @@ function LandingPage() {
       setIsLoading(false);
       throw new Error(error);  
     }
-  }, [urlInput]);
+  }, [urlInput, currentUser]);
 
   const getAllUrls = useCallback(async () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.get('/url');
+      const response = await axios.get(`/url?${currentUser ? `userId=${currentUser._id}` : ''}`);
       setUrlsList(response.data.urls);
       setIsLoading(false);
     } 
@@ -45,7 +54,7 @@ function LandingPage() {
       setIsLoading(false);
       throw new Error(error);  
     }
-  }, []);
+  }, [currentUser]);
 
   const openEmailModal = () => {
     setIsModalOpen(true);
@@ -57,7 +66,7 @@ function LandingPage() {
 
   useEffect(() => {
     getAllUrls();
-  }, [getAllUrls, addUrl])
+  }, [getAllUrls, addUrl, currentUser])
   
   return (
     <div className={style.landingPageView}>
@@ -71,7 +80,7 @@ function LandingPage() {
             <input onChange={handleUrlInputChange} className={style.addUrlInput} value={urlInput} type='text' placeholder='Long url...' />
             <button onClick={addUrl} className={style.addUrlButton}>ADD</button>
           </div>
-          <p onClick={openEmailModal} className={style.addEmailMessage}>The URL's below can be seen by anyone, if you want to store your own URL's please <span style={ { color: 'lightblue', textDecoration: 'underline', cursor: 'pointer' } }>add an email.</span></p>
+          <p className={style.addEmailMessage}>The URL's below can be seen by anyone, if you want to store your own URL's please <span onClick={openEmailModal} className={style.addAnEmailLink}>add an email.</span></p>
         </div>
       </div>
 
