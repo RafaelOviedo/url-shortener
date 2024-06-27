@@ -14,9 +14,18 @@ function NavBar() {
   const currentUser = useSelector((state) => state.auth.user);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isNavbarItemsOpen, setIsNavbarItemsOpen] = useState(false);
 
   const logOut = () => {
     dispatch(logout());
+  }
+
+  const openNavBarPanel = () => {
+    setIsNavbarItemsOpen(true);
+  }
+
+  const closeNavBarPanel = () => {
+    setIsNavbarItemsOpen(false);
   }
 
   const openEmailModal = () => {
@@ -62,13 +71,59 @@ function NavBar() {
             </>
           )
         }
-
-        {
-          isModalOpen ? (
-            <SignInModal onModalClose={closeEmailModal} />
-          ) : ''
-        }
       </div>
+
+      <button
+        class={style.openNavbarMenuButton}
+        onClick={openNavBarPanel}
+      >
+        <i class="pi pi-bars" />
+      </button>
+
+      {
+        isNavbarItemsOpen ? (
+          <div className={style.mobileNavbarMenuContainer}>
+            <div className={style.mobileNavBox}>
+              <Link 
+                to='/about'
+                className={style.linkItem}
+              >
+                About
+              </Link>
+
+              {
+                currentUser ? (
+                  <>
+                    <button onClick={logOut} className={style.logout}>
+                      <span>Logout</span>
+                      &nbsp;
+                      &nbsp;
+                      <i className='pi pi-sign-out' style={{fontSize: '15px'}}></i>
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button onClick={openEmailModal} className={style.logout}>
+                      <span>See my URL's</span>
+                      &nbsp;
+                      &nbsp;
+                      <i className='pi pi-sign-in' style={{fontSize: '15px'}}></i>
+                    </button>
+                  </>
+                )
+              }
+
+              <button className={style.closeNavbarMenuButton} onClick={closeNavBarPanel}>X</button>
+            </div>
+          </div>
+        ) : ''
+      }
+      
+      {
+        isModalOpen ? (
+          <SignInModal onModalClose={closeEmailModal} />
+        ) : ''
+      }
     </nav>
   )
 }
