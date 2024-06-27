@@ -39,7 +39,7 @@ function NavBar() {
   return (
     <nav className={style.navContainer}>
       <div className={style.logoContainer}>
-        <span onClick={() => navigate('/')} style={ { fontSize: '25px', fontWeight: 'bold', color: '#fff', cursor: 'pointer' } }>LIT URL</span>
+        <span onClick={() => navigate('/')} style={ { fontSize: '25px', fontWeight: 'bold', color: '#9290C3', cursor: 'pointer' } }>LIT URL</span>
       </div>
 
       <div className={style.navBox}>
@@ -74,10 +74,10 @@ function NavBar() {
       </div>
 
       <button
-        class={style.openNavbarMenuButton}
+        className={style.openNavbarMenuButton}
         onClick={openNavBarPanel}
       >
-        <i class="pi pi-bars" />
+        <i className="pi pi-bars" />
       </button>
 
       {

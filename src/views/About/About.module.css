@@ -1,75 +1,112 @@
-.aboutComponent {
+.aboutView {
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: 93vh;
   color: #9290C3;
   background: #070F2B;
 }
-
-.textContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 20%;
-}
-.socialMediaContainer {
+.contentContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  text-align: center;
+  overflow: scroll;
+  width: 95%;
+  height: 100%;
+}
+.whatItDoesContainer {
+  text-align: left;
   width: 100%;
-  height: 60%;
+  height: 400px;
 }
-.socialMediaText {
-  font-size: 18px;
-}
-.iconsContainer {
+.exampleContainer {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  width: 100%;
-  height: 70%;
-  padding-left: 20px;
-}
-.githubIconContainer {
-  width: 50%;
-  height: 50%;
-}
-.githubIcon {
-  display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
-  height: 100px;
-  background: white;
-}
-
-.linkedinIconContainer {
-  width: 50%;
-  height: 50%;
-}
-.linkedinIcon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
-  height: 100px;
-  background: white;
-}
-
-.versionContainer {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
   width: 100%;
-  height: 20%;
-  padding-bottom: 10px;
+  height: 400px;
+}
+.algorithmImage {
+  width: 100%;
+  height: 100%;
+}
+.goodAlgorithmContainer {
+  text-align: left;
+  width: 100%;
+  height: 520px;
+}
+.aboutCollisionProbabilityContainer {
+  text-align: left;
+  width: 100%;
+  height: 300px;
+}
+.stepByStepContainer {
+  text-align: left;
+  width: 100%;
+  height: 870px;
+}
+.calculatorContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+  height: 400px;
+}
+.idsToGenerateInput {
+  width: 70%;
+  height: 30px;
+  outline: none;
+  border-radius: 5px 0 0 5px;
+  font-size: 17px;
+  color: #9290C3;
+  border: 1px solid #9290C3;
+  background: transparent;
+}
+.calculateButton {
+  height: 35px;
+  outline: none;
+  border-radius: 0 5px 5px 0;
+  border: none;
   font-size: 15px;
+  font-weight: bold;
+  color: #070F2B;
+  background: #20B2AA;
+}
+.calculationResult {
+  font-size: 20px;
+  margin-left: 10px;
+  font-weight: bold;
+  color: #9290C3;
 }
 
-@media screen and (width < 768px) {}
+@media screen and (width > 768px) {
+  .whatItDoesContainer {
+    width: 60%;
+  }
+  .exampleContainer {
+    width: 60%;
+    height: 450px;
+  }
+  .goodAlgorithmContainer {
+    width: 60%;
+  }
+  .aboutCollisionProbabilityContainer {
+    width: 60%;
+  }
+  .stepByStepContainer {
+    width: 60%;
+  }
+  .calculatorContainer {
+    width: 60%;
+  }
+}
+
+@media screen and (width > 1480px) {
+  .exampleContainer {
+    height: 600px;
+  }
+}
