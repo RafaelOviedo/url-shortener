@@ -1,12 +1,41 @@
 import style from './About.module.css';
-import algorithmImage from '../../assets/images/short-id-algorithm.jpeg';
 import calculateCollisionProbability from '../../utils/calculateCollisionProbability';
 import { useState, useEffect, useRef } from 'react';
+
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { darcula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 function About() {
   const [collisionProbability, setCollisionProbability] = useState(0);
   const [calculationValue, setCalculationValue] = useState('');
   const containerRef = useRef(null);
+
+  const codeBlock = `
+    const crypto = require('crypto');
+    const UserSchema = require('../models/User');
+    
+    const NUM_CHARS_SHORT_LINK = 7;
+    const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const ALPHABET_LENGTH = ALPHABET.length;
+    
+    async function generateRandomShortUrl() {
+        let result = new Array(NUM_CHARS_SHORT_LINK);
+        
+        while (true) {
+            for (let i = 0; i < NUM_CHARS_SHORT_LINK; i++) {
+                let randomIndex = crypto.randomInt(ALPHABET_LENGTH);
+                result[i] = ALPHABET.charAt(randomIndex);
+            }
+            let shortLink = result.join('');
+            
+            const isShortUrlStored = await UserSchema.exists({ shortUrlId: shortLink })
+    
+            if (isShortUrlStored === null) {
+              return shortLink;
+            }
+        }
+    }
+  `
 
   const handleCalculationInputChange = (event) => {
     setCalculationValue(event.target.value);
@@ -52,7 +81,9 @@ function About() {
         <p>The algorithm used to generate short, unique URLs securely is the following:</p>
 
         <div className={style.exampleContainer}>
-          <img src={algorithmImage} className={style.algorithmImage} alt='algorithm' />
+          <SyntaxHighlighter language="javascript" style={darcula}>
+            { codeBlock }
+          </SyntaxHighlighter>
         </div>
 
         <h2>Why is this algorithm a good choice?</h2>
