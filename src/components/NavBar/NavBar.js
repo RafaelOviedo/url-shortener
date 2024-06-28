@@ -87,6 +87,7 @@ function NavBar() {
               <Link 
                 to='/about'
                 className={style.linkItem}
+                onClick={closeNavBarPanel}
               >
                 About
               </Link>
