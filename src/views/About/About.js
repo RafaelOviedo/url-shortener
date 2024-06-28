@@ -49,7 +49,7 @@ function About() {
 
   useEffect(() => {
     if (containerRef.current) {
-      containerRef.current.scrollTop = 0;
+      containerRef.current.scrollTop = 5;
     }
   }, []);
 
