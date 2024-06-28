@@ -36,6 +36,11 @@ function NavBar() {
     setIsModalOpen(data);
   }
 
+  const handleClick = () => {
+    closeNavBarPanel();
+    openEmailModal();
+  }
+
   return (
     <nav className={style.navContainer}>
       <div className={style.logoContainer}>
@@ -104,7 +109,7 @@ function NavBar() {
                   </>
                 ) : (
                   <>
-                    <button onClick={openEmailModal} className={style.logout}>
+                    <button onClick={handleClick} className={style.logout}>
                       <span>See my URL's</span>
                       &nbsp;
                       &nbsp;
