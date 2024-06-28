@@ -1,11 +1,12 @@
 import style from './About.module.css';
 import algorithmImage from '../../assets/images/short-id-algorithm.jpeg';
 import calculateCollisionProbability from '../../utils/calculateCollisionProbability';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 function About() {
   const [collisionProbability, setCollisionProbability] = useState(0);
   const [calculationValue, setCalculationValue] = useState('');
+  const containerRef = useRef(null);
 
   const handleCalculationInputChange = (event) => {
     setCalculationValue(event.target.value);
@@ -17,9 +18,15 @@ function About() {
     setCollisionProbability(result);
   };
 
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = 0;
+    }
+  }, []);
+
   return (
     <div className={style.aboutView}>
-      <div className={style.contentContainer}>
+      <div className={style.contentContainer} ref={containerRef}>
         <h1>About LIT URL</h1>
 
         <p>This is a project I built to understand how an URL-Shortener works behind the scenes. Here's a bit about what it does and how it works.</p>
