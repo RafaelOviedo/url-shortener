@@ -1,6 +1,7 @@
 import style from './About.module.css';
 import calculateCollisionProbability from '../../utils/calculateCollisionProbability';
 import { useState, useEffect, useRef } from 'react';
+import logoImage from '../../assets/images/logo-transparent-bg.png'
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { darcula } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -56,7 +57,9 @@ function About() {
   return (
     <div className={style.aboutView}>
       <div className={style.contentContainer} ref={containerRef}>
-        <h1>About LIT URL</h1>
+        <h1>About</h1>
+
+        <img src={logoImage} alt='logo' className={style.logoImage} />
 
         <p>This is a project I built to understand how an URL-Shortener works behind the scenes. Here's a bit about what it does and how it works.</p>
 

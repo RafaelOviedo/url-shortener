@@ -19,6 +19,10 @@
   width: 95%;
   height: 100%;
 }
+.logoImage {
+  width: 90px;
+  height: 90px;
+}
 .whatItDoesContainer {
   text-align: left;
   width: 100%;
@@ -98,6 +102,10 @@
   }
   .goodAlgorithmContainer, .aboutCollisionProbabilityContainer, .stepByStepContainer, .calculatorContainer {
     width: 60%;
+  }
+  .logoImage {
+    width: 140px;
+    height: 140px;
   }
 }
 

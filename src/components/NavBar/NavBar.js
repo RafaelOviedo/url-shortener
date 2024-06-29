@@ -1,6 +1,7 @@
 import style from './NavBar.module.css';
 import { Link, useNavigate } from "react-router-dom";
 import 'primeicons/primeicons.css';
+import logoImage from '../../assets/images/logo-transparent-bg.png';
 
 import SignInModal from '../Auth/SignInModal/SignInModal'
 
@@ -43,8 +44,9 @@ function NavBar() {
 
   return (
     <nav className={style.navContainer}>
-      <div className={style.logoContainer}>
-        <span onClick={() => navigate('/')} style={ { fontSize: '25px', fontWeight: 'bold', color: '#9290C3', cursor: 'pointer' } }>LIT URL</span>
+      <div onClick={() => navigate('/')} className={style.logoContainer}>
+        <span className={style.logoNavbarName}>LIT URL</span>
+        <img className={style.logoImage} src={logoImage} alt='logo' />
       </div>
 
       <div className={style.navBox}>
