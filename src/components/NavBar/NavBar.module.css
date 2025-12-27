@@ -4,7 +4,7 @@
   align-items: center;
   width: 100%;
   height: 7vh;
-  background: #1B1A55;
+  background: #2791F5;
 }
 
 .logoContainer {
@@ -18,7 +18,7 @@
 .logoNavbarName {
   font-size: 25px;
   font-weight: bold;
-  color: #9290C3;
+  color: #FFF;
   cursor: pointer;
 }
 
@@ -46,7 +46,7 @@
 .linkItem {
   text-decoration: none;
   font-weight: bold;
-  color: #9290C3;
+  color: #FFF;
   cursor: pointer;
   font-size: 15px;
 }
@@ -54,7 +54,7 @@
 .logout {
   text-decoration: none;
   font-weight: bold;
-  color: #9290C3;
+  color: #FFF;
   cursor: pointer;
   background: none;
   border: none;
@@ -66,7 +66,7 @@
   top: 0;
   width: 100%;
   height: 7vh;
-  background: #1B1A55;
+  background: #2791F5;
 }
 .openNavbarMenuButton {
   display: flex;
@@ -80,7 +80,7 @@
   font-size: 17px;
   margin-right: 10px;
   color: #1B1A55;
-  background: #9290C3;
+  background: #FFF;
 }
 .closeNavbarMenuButton {
   display: flex;
@@ -90,9 +90,9 @@
   height: 25px;
   border: none;
   font-size: 17px;
-  color: #1B1A55;
+  color: #2791F5;
   border-radius: 5px;
-  background: #9290C3;
+  background: #FFF;
 }
 
 @media screen and (width > 768px) {

@@ -4,8 +4,8 @@
   align-items: center;
   width: 100%;
   height: 93vh;
-  color: #9290C3;
-  background: #070F2B;
+  color: #2791F5;
+  background: #FFF;
 }
 .contentContainer {
   display: flex;
@@ -18,6 +18,10 @@
   margin-bottom: 5%;
   width: 95%;
   height: 100%;
+}
+
+.contentContainer::-webkit-scrollbar {
+  display: none;
 }
 .logoImage {
   width: 90px;
@@ -82,14 +86,14 @@
   border: none;
   font-size: 15px;
   font-weight: bold;
-  color: #070F2B;
-  background: #20B2AA;
+  color: #FFF;
+  background: #2791F5;
 }
 .calculationResult {
   font-size: 20px;
   margin-left: 10px;
   font-weight: bold;
-  color: #9290C3;
+  color: #2791F5;
 }
 
 @media screen and (width > 768px) {

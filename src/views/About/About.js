@@ -1,7 +1,6 @@
 import style from './About.module.css';
 import calculateCollisionProbability from '../../utils/calculateCollisionProbability';
 import { useState, useEffect, useRef } from 'react';
-import logoImage from '../../assets/images/logo-transparent-bg.png'
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { darcula } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -59,22 +58,20 @@ function About() {
       <div className={style.contentContainer} ref={containerRef}>
         <h1>About</h1>
 
-        <img src={logoImage} alt='logo' className={style.logoImage} />
-
         <p>This is a project I built to understand how an URL-Shortener works behind the scenes. Here's a bit about what it does and how it works.</p>
 
         <h2>What it does?</h2>
 
         <div className={style.whatItDoesContainer}>
           <h3>Shorten Long URLs:</h3>
-          
+
           <p>Got a long, unwieldy link? Turn it into a short, neat one.</p>
 
           <h3>Retrieve All Your URLs:</h3>
 
           <p>In the main page you can see all the URLs you've shortened, generally, and also your own if you created an account.</p>
 
-          <h3>User Accounts:</h3> 
+          <h3>User Accounts:</h3>
 
           <p>Create an account with your email to store and manage your shortened URLs.</p>
         </div>
@@ -85,7 +82,7 @@ function About() {
 
         <div className={style.exampleContainer}>
           <SyntaxHighlighter language="javascript" style={darcula}>
-            { codeBlock }
+            {codeBlock}
           </SyntaxHighlighter>
         </div>
 
@@ -94,16 +91,16 @@ function About() {
         <div className={style.goodAlgorithmContainer}>
 
           <h3>Randomness:</h3>
-          
+
           <p>
             The algorithm uses a Cryptographically Secure Pseudo-Random Number Generator (CSPRNG) (crypto.randomInt).
             <br />
             <br />
             This means the short URLs it generates are truly random and secure.
           </p>
-          
+
           <h3>Low Collision Probability:</h3>
-          
+
           <p>
             With a length of 7 characters and 62 characters to choose from [a-z-A-Z-0-9], there are 62^7 possible combinations.
             <br />
@@ -123,11 +120,11 @@ function About() {
 
         <div className={style.aboutCollisionProbabilityContainer}>
           <p>
-            You might have heard of the 'birthday paradox'. 
+            You might have heard of the 'birthday paradox'.
             <br />
             <br />
-            It's a way to think about how likely it is that two people in a room share the same birthday. 
-            For URLs, even as the number of URLs grows, the chance of a collision (two identical short URLs) is really, really small because of the large 
+            It's a way to think about how likely it is that two people in a room share the same birthday.
+            For URLs, even as the number of URLs grows, the chance of a collision (two identical short URLs) is really, really small because of the large
             number of possible combinations.
             <br />
             <br />
@@ -143,16 +140,16 @@ function About() {
           <h3>2. Total Possible Combinations:</h3>
           <p>For a 7-character ID, each character can be one of 62 possible characters. Therefore, the total number of unique IDs is: <br /><br /> N = 62^7</p>
           <h3>3. Calculating N:</h3>
-            <p>N = 62^7 <br /><br /> N = 62^7 = 3521614606208.</p>
+          <p>N = 62^7 <br /><br /> N = 62^7 = 3521614606208.</p>
           <p>This means there are 3,521,614,606,208 possible unique IDs.</p>
           <h3>4. Birthday Paradox and Collision Probability:</h3>
           <p>The problem of finding collisions in randomly generated IDs is analogous to the birthday paradox. The probability P(n) of at least one collision after generating n IDs can be approximated using a particular formula.</p>
-          
+
           <p>If you want to know more about the math behind, you can check the following articles:</p>
-          <a style={ { wordBreak: 'break-all', color: 'lightblue' } } href='https://en.wikipedia.org/wiki/Birthday_problem' target='_blank' rel='noreferrer'>* https://en.wikipedia.org/wiki/Birthday_problem</a>
+          <a style={{ wordBreak: 'break-all', color: '#000' }} href='https://en.wikipedia.org/wiki/Birthday_problem' target='_blank' rel='noreferrer'>* https://en.wikipedia.org/wiki/Birthday_problem</a>
           <br />
           <br />
-          <a style={ { wordBreak: 'break-all', color: 'lightblue' } } href='https://en.wikipedia.org/wiki/Universally_unique_identifier#Collisions' target='_blank' rel='noreferrer'>* https://en.wikipedia.org/wiki/Universally_unique_identifier#Collisions</a>
+          <a style={{ wordBreak: 'break-all', color: '#000' }} href='https://en.wikipedia.org/wiki/Universally_unique_identifier#Collisions' target='_blank' rel='noreferrer'>* https://en.wikipedia.org/wiki/Universally_unique_identifier#Collisions</a>
 
           <p>So, the probability with these conditions of at least one collision after generating 1 million IDs, is approximately 13.3%.</p>
         </div>
@@ -164,7 +161,7 @@ function About() {
 
           <h3>Unique possible IDs quantity (62^7):</h3>
           <span>3,521,614,606,208</span>
-          
+
           <h3>Quantity of IDs to generate:</h3>
           <div>
             <input onChange={handleCalculationInputChange} className={style.idsToGenerateInput} type='number' value={calculationValue} />
@@ -172,7 +169,7 @@ function About() {
           </div>
 
           <h3>Probability of Collision:</h3>
-          <span className={style.calculationResult}>{ `${collisionProbability} %` }</span>
+          <span className={style.calculationResult}>{`${collisionProbability} %`}</span>
           <br />
           <br />
 

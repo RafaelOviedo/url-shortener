@@ -18,7 +18,7 @@ function LandingPage() {
     setUrlInput(event.target.value)
   }
 
-  const addUrl = useCallback(async(event) => {
+  const addUrl = useCallback(async (event) => {
     event.preventDefault();
     setIsLoading(true);
 
@@ -35,10 +35,10 @@ function LandingPage() {
       await axios.post('/url/shorten', data);
       setUrlInput('');
       setIsLoading(false);
-    } 
+    }
     catch (error) {
       setIsLoading(false);
-      throw new Error(error);  
+      throw new Error(error);
     }
   }, [urlInput, currentUser]);
 
@@ -49,10 +49,10 @@ function LandingPage() {
       const response = await axios.get(`/url?${currentUser ? `userId=${currentUser._id}` : ''}`);
       setUrlsList(response.data.urls);
       setIsLoading(false);
-    } 
+    }
     catch (error) {
       setIsLoading(false);
-      throw new Error(error);  
+      throw new Error(error);
     }
   }, [currentUser]);
 
@@ -67,7 +67,7 @@ function LandingPage() {
   useEffect(() => {
     getAllUrls();
   }, [getAllUrls, addUrl, currentUser])
-  
+
   return (
     <div className={style.landingPageView}>
       <div className={style.landingContainer}>
@@ -93,23 +93,23 @@ function LandingPage() {
 
         {
           isLoading ? (
-            <ProgressSpinner style={{width: '50px', height: '50px', marginTop: '10px'}} strokeWidth="4" />
+            <ProgressSpinner style={{ width: '50px', height: '50px', marginTop: '10px' }} strokeWidth="4" />
           ) : (
             <div className={style.urlsListContainer}>
               {
                 !urlsList?.length ? (
                   <div className={style.noUrlsDisplayed}>No URL's have been added yet</div>
                 ) : (
-                urlsList && urlsList.map((url) => (
-                  <div key={url._id} className={style.urlRow}>
-                    <div className={style.longUrlColumn}>{ url.longUrl }</div>
-                    <div className={style.shortUrlColumn}>
-                      <a className={style.urlLink} href={url.shortUrl}>{ url.shortUrl }</a>
+                  urlsList && urlsList.map((url) => (
+                    <div key={url._id} className={style.urlRow}>
+                      <div className={style.longUrlColumn}>{url.longUrl}</div>
+                      <div className={style.shortUrlColumn}>
+                        <a className={style.urlLink} href={url.shortUrl}>{url.shortUrl}</a>
+                      </div>
+                      <div className={style.clicksColumn}>{url.clicks}</div>
                     </div>
-                    <div className={style.clicksColumn}>{ url.clicks }</div>
-                  </div>
-                ))
-              )}
+                  ))
+                )}
             </div>
           )
         }
@@ -117,7 +117,7 @@ function LandingPage() {
         {
           isModalOpen ?
             <EmailModal onModalClose={closeEmailModal} />
-        : ''
+            : ''
         }
       </div>
     </div>

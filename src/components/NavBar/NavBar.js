@@ -5,7 +5,7 @@ import logoImage from '../../assets/images/logo-transparent-bg.png';
 
 import SignInModal from '../Auth/SignInModal/SignInModal'
 
-import {  useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../features/auth/authSlice';
 import { useState } from 'react';
 
@@ -46,11 +46,10 @@ function NavBar() {
     <nav className={style.navContainer}>
       <div onClick={() => navigate('/')} className={style.logoContainer}>
         <span className={style.logoNavbarName}>LIT URL</span>
-        <img className={style.logoImage} src={logoImage} alt='logo' />
       </div>
 
       <div className={style.navBox}>
-        <Link 
+        <Link
           to='/about'
           className={style.linkItem}
         >
@@ -64,7 +63,7 @@ function NavBar() {
                 <span>Logout</span>
                 &nbsp;
                 &nbsp;
-                <i className='pi pi-sign-out' style={{fontSize: '15px'}}></i>
+                <i className='pi pi-sign-out' style={{ fontSize: '15px' }}></i>
               </button>
             </>
           ) : (
@@ -73,7 +72,7 @@ function NavBar() {
                 <span>See my URL's</span>
                 &nbsp;
                 &nbsp;
-                <i className='pi pi-sign-in' style={{fontSize: '15px'}}></i>
+                <i className='pi pi-sign-in' style={{ fontSize: '15px' }}></i>
               </button>
             </>
           )
@@ -91,7 +90,7 @@ function NavBar() {
         isNavbarItemsOpen ? (
           <div className={style.mobileNavbarMenuContainer}>
             <div className={style.mobileNavBox}>
-              <Link 
+              <Link
                 to='/about'
                 className={style.linkItem}
                 onClick={closeNavBarPanel}
@@ -106,7 +105,7 @@ function NavBar() {
                       <span>Logout</span>
                       &nbsp;
                       &nbsp;
-                      <i className='pi pi-sign-out' style={{fontSize: '15px'}}></i>
+                      <i className='pi pi-sign-out' style={{ fontSize: '15px' }}></i>
                     </button>
                   </>
                 ) : (
@@ -115,7 +114,7 @@ function NavBar() {
                       <span>See my URL's</span>
                       &nbsp;
                       &nbsp;
-                      <i className='pi pi-sign-in' style={{fontSize: '15px'}}></i>
+                      <i className='pi pi-sign-in' style={{ fontSize: '15px' }}></i>
                     </button>
                   </>
                 )
@@ -126,7 +125,7 @@ function NavBar() {
           </div>
         ) : ''
       }
-      
+
       {
         isModalOpen ? (
           <SignInModal onModalClose={closeEmailModal} />

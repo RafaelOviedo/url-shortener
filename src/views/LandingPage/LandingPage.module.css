@@ -5,7 +5,7 @@
   align-items: center;
   width: 100%;
   height: 93vh;
-  background: #070F2B;
+  background: #FFF;
 }
 .landingContainer {
   display: flex;
@@ -21,7 +21,7 @@
   font-size: 30px;
   font-weight: bold;
   text-align: center;
-  color: #9290C3;
+  color: #2791F5;
   margin: 0;
 }
 .inputButtonContainer {
@@ -46,24 +46,25 @@
   border: none;
   outline: none;
   font-size: 18px;
+  background: #CCC;
 }
 .addUrlInput::placeholder {
   font-size: 15px;
 }
 .addUrlButton {
   width: 20%;
-  height: 70%;
+  height: 65%;
   border-radius: 0 5px 5px 0;
   border: none;
   outline: none;
   color: #fff;
   font-size: 15px;
   font-weight: bold;
-  background: #1B1A55;
+  background: #2791F5;
   cursor: pointer;
 }
 .addEmailMessage {
-  color: #9290C3;
+  color: #2791F5;
   width: 90%;
   font-size: 15px;
   text-align: center;
@@ -80,7 +81,8 @@
   width: 100%;
   height: 10%;
   font-size: 15px;
-  background: #1B1A55;
+  background: #2791F5;
+  color: #FFF;
   font-weight: bold;
 }
 .longUrlHeader {
@@ -112,6 +114,9 @@
   height: 85%;
   overflow: scroll;
 }
+.urlsListContainer::-webkit-scrollbar {
+  display: none;
+}
 .noUrlsDisplayed {
   display: flex;
   justify-content: center;
@@ -127,9 +132,12 @@
   width: 100%;
   height: auto;
   min-height: 15%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: #005CB3;
 }
 .urlRow:nth-child(even) {
-  background: #535C91;
+  background: #ADD5FF;
 }
 .longUrlColumn {
   display: flex;
@@ -149,7 +157,7 @@
   word-break: break-word;
 }
 .urlLink {
-  color: lightblue;
+  color: #000;
 }
 .clicksColumn {
   display: flex;
@@ -160,7 +168,7 @@
   padding-right: 10px;
 }
 .addAnEmailLink {
-  color: lightblue;
+  color: #000;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -184,7 +192,8 @@
     height: 60%;
   }
   .addUrlButton {
-    height: 70%;
+    width: 10%;
+    height: 61%;
   }
   .addEmailMessage {
     font-size: 17px;
