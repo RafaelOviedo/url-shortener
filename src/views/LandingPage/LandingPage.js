@@ -34,11 +34,13 @@ function LandingPage() {
     try {
       await axios.post('/url/shorten', data);
       setUrlInput('');
-      setIsLoading(false);
+      await getAllUrls();
     }
     catch (error) {
-      setIsLoading(false);
       throw new Error(error);
+    }
+    finally {
+      setIsLoading(false);
     }
   }, [urlInput, currentUser]);
 
@@ -66,7 +68,7 @@ function LandingPage() {
 
   useEffect(() => {
     getAllUrls();
-  }, [getAllUrls, addUrl, currentUser])
+  }, [getAllUrls])
 
   return (
     <div className={style.landingPageView}>
